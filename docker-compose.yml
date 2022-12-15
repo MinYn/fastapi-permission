@@ -21,6 +21,8 @@ services:
     build:
       context: ./project/db
       dockerfile: Dockerfile
+    ports:
+      - 15432:5432
     expose:
       - 5432
     environment:
