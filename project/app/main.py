@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from app.api import ping, summaries
 from app.db import init_db
+from app.permission import Permission
 
 log = logging.getLogger("uvicorn")
 
@@ -25,6 +26,7 @@ app = create_application()
 async def startup_event():
     log.info("Starting up...")
     init_db(app)
+    Permission.route_description_edit_permission_text(app)
 
 
 @app.on_event("shutdown")
